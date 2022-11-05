@@ -1,0 +1,27 @@
+on leftclick:
+	if player's tool is crossbow named "&4Kusza Nyxanu":
+		if {cooldown::nkusza::%player%} is set:
+			if difference between {cooldown::nkusza::%player%} and now is less than 13 seconds:
+				stop
+		set {cooldown::nkusza::%player%} to now
+		apply speed 1 without particles to the player for 5 seconds
+		shoot an snowball from the player at speed 1.4
+On damage:
+	projectile exist
+	projectile is a snowball
+	attacker's tool is crossbow named "&4Kusza Nyxanu":
+		apply blindness 1 without particles to the victim for 2 seconds
+		apply slowness 5 without particles to the victim for 2 seconds
+		damage victim by 1 hearts
+On damage:
+	projectile exist
+	projectile is a arrow
+	attacker's tool is crossbow named "&4Kusza Nyxanu":
+		damage victim by 4 hearts
+on sneak toggle:
+	player is sneaking
+	if player's tool is crossbow named "&4Kusza Nyxanu":
+		apply slowness 4 without particles to the player for 2 second
+on shoot:
+	if shooter's tool is crossbow named "&4Kusza Nyxanu":
+		give arrow to the shooter

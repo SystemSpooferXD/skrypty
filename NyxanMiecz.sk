@@ -1,0 +1,25 @@
+on rightclick:
+	if player's tool is iron sword named "&4Miecz Nyxanu":
+		if {cooldown::nmiecz::%player%} is set:
+			if difference between {cooldown::nmiecz::%player%} and now is less than 25 seconds:
+				stop
+		set {cooldown::nmiecz::%player%} to now
+		apply speed 1 without particles to the player for 5 seconds
+		apply strength 1 without particles to the player for 5 seconds
+		apply haste 3 without particles to the player for 5 seconds 
+		delete {cooldown::nmiecz2::%player%}
+
+on damage:
+	if attacker's tool is iron sword named "&4Miecz Nyxanu":
+		if {cooldown::nmiecz2::%attacker%} is set:
+			if difference between {cooldown::nmiecz2::%attacker%} and now is less than 8 seconds:
+				stop
+		set {cooldown::nmiecz2::%attacker%} to now
+		wait 0.4 seconds
+		damage the victim by 0.5 hearts
+		wait 0.4 seconds
+		damage the victim by 0.5 hearts
+		wait 0.4 seconds
+		damage the victim by 0.5 hearts
+		wait 0.4 seconds
+		damage the victim by 1 heart

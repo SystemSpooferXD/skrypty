@@ -1,0 +1,16 @@
+on rightclick:
+	if player's tool is golden axe named "&4Topor Bojowy Nyxanu":
+		if {cooldown::ntopor::%player%} is set:
+			if difference between {cooldown::ntopor::%player%} and now is less than 12 seconds:
+				stop
+		set {cooldown::ntopor::%player%} to now
+		push the player upwards at speed 0.6
+		apply strength 2 without particles to the player for 3 seconds
+		apply absorption 2 without particles to the player for 5 seconds 
+on damage:
+	if attacker's tool is golden axe named "&4Topor Bojowy Nyxanu":
+		if {cooldown::ntopor2::%attacker%} is set:
+			if difference between {cooldown::ntopor2::%attacker%} and now is less than 9 seconds:
+				stop
+		set {cooldown::ntopor2::%attacker%} to now
+		apply slowness 2 to the victim for 2 seconds

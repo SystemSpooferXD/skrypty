@@ -1,0 +1,20 @@
+on rightclick:
+    if player's tool is diamond sword named "&4Rapier Nyxanu":
+        if {cooldown::nrapier::%player%} is set:
+            if difference between {cooldown::nrapier::%player%} and now is less than 9 seconds:
+                stop
+        set {cooldown::nrapier::%player%} to now
+        push player forwards at speed 1.2
+on damage:
+    if attacker's tool is diamond sword named "&4Rapier Nyxanu":
+        add 1 to {nrapier}
+        wait 0.1 seconds
+    if {nrapier} is more than 2:
+        damage the victim by 2 hearts
+        apply speed 1 without particles to the attacker for 2 seconds
+        apply haste 1 without particles to the attacker for 1 seconds
+        apply slowness 1 without particles to the victim for 2 seconds
+        if {cooldown::nrapier::%attacker%} is set:
+            remove 4 seconds from {cooldown::nrapier::%attacker%}
+            send "&4Cooldown dasha został skrócony" to attacker
+        set {nrapier} to 0

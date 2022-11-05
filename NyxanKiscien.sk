@@ -1,0 +1,22 @@
+On rightclick:
+	if player's tool is diamond shovel named "&4Kiscien Nyxanu":
+		if {cooldown::nkiscien::%player%} is set:
+			if difference between {cooldown::nkiscien::%player%} and now is less than 5 seconds:
+				stop
+		set {cooldown::nkiscien::%player%} to now
+		shoot an snowball from the player at speed 0.6
+On damage:
+	projectile exist
+	projectile is a snowball
+	attacker's tool is diamond shovel named "&4Kiscien Nyxanu":
+		apply slowness 3 without particles to the victim for 2 seconds
+		damage victim by 3 hearts
+On damage:
+	if attacker's tool is diamond shovel named "&4Kiscien Nyxanu":
+		if {cooldown::nkiscien2::%attacker%} is set:
+			if difference between {cooldown::nkiscien2::%attacker%} and now is less than 40 seconds:
+				stop
+		set {cooldown::nkiscien2::%attacker%} to now
+		damage the victim by 4 hearts
+		apply absorption 2 without particles to the attacker for 7 seconds
+		apply resistance without particles to the attacker for 7 seconds

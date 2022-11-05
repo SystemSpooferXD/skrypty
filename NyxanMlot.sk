@@ -1,0 +1,23 @@
+On right click:
+	If player's tool is diamond pickaxe named "&4Mlot Nyxanu":
+		if {cooldown::nmlot::%player%} is set:
+			if difference between {cooldown::nmlot::%player%} and now is less than 24 seconds:
+				stop
+		set {cooldown::nmlot::%player%} to now
+		loop all entities in radius 7 around player:
+			apply absorption 2 without particles to the player for 4 seconds
+			wait 0.3 seconds
+			Damage loop-entity by 3
+			push loop-entity upwards at speed 0.8
+			wait 0.3 seconds
+			heal player by 3 hearts
+On damage:
+	If attacker's tool is diamond pickaxe named "&4Mlot Nyxanu":
+		if {cooldown::nmlot2::%attacker%} is set:
+			if difference between {cooldown::nmlot2::%attacker%} and now is less than 9 seconds:
+				stop
+		set {cooldown::nmlot2::%attacker%} to now
+		apply slowness 8 without particles to the victim for 0.8 seconds
+		apply blindness 1 without particles to the victim for 0.8 seconds
+		push the attacker forwards at speed 1.4
+		damage the victim by 2 hearts

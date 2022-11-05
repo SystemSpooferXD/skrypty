@@ -1,0 +1,21 @@
+On right click:
+	If player's tool is stone axe named "&4Ciezki Topor Nyxanu":
+		if {cooldown::nctopor::%player%} is set:
+			if difference between {cooldown::nctopor::%player%} and now is less than 18 seconds:
+				stop
+		set {cooldown::nctopor::%player%} to now
+		loop all entities in radius 4 around player:
+			apply absorption 2 without particles to the player for 4 seconds
+			wait 0.3 seconds
+			Damage loop-entity by 4
+			apply regeneration 3 without particles to the player for 3 seconds
+On damage:
+	If attacker's tool is stone axe named "&4Ciezki Topor Nyxanu":
+		if {cooldown::nctopor2::%attacker%} is set:
+			if difference between {cooldown::nctopor2::%attacker%} and now is less than 12 seconds:
+				stop
+		set {cooldown::nctopor::%attacker%} to now
+		damage the victim by 3 hearts
+		wait 1 second 
+		apply strength 1 without particles to the attacker for 2.5 seconds
+		heal the attacker by 1 heart

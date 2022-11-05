@@ -1,0 +1,34 @@
+on leftclick:
+	if player's tool is bow named "&4Luk Nyxanu":
+		if {cooldownnluk%player%} is set:
+			if difference between {cooldownn::luk::%attacker%} and now is less than 18 seconds
+                stop
+		set {cooldownn::luk::%attacker%} to now
+		apply speed 3 without particles to the player for 5 seconds
+		push the player upwards at speed 1.1
+		push the player backwards at speed 1.2
+		set {lukrage} to 1
+		wait 4 seconds
+		set {lukrage} to 0
+on damage:
+	damage is caused by fall
+	if victim's tool is bow named "&4Luk Nyxanu":
+        	cancel event
+on shoot:
+	if shooter's tool is bow named "&4Luk Nyxanu":
+		wait 0.5 second
+		give arrow to shooter
+on damage:
+	projectile exist
+	projectile is an arrow
+	if attacker's tool is bow named "&4Luk Nyxanu":
+		if {lukrage} is 1:
+			damage the victim by 5 hearts
+			apply poison 2 to the victim for 3 seconds
+		else:
+			damage the victim by 2 hearts
+on damage:
+	projectile exist
+	projectile is an arrow
+	if attacker's tool is bow named "&4Luk Nyxanu":
+		remove 3 seconds from {cooldownn::luk::%attacker%}
